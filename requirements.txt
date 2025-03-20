@@ -1,7 +1,6 @@
 streamlit
 mistralai
 google-genai
-re
 python-dotenv
 streamlit-mermaid
 langchain-google-genai
