@@ -6,3 +6,4 @@ streamlit-mermaid
 langchain-google-genai
 langchain-core
 faiss-cpu
+langchain
