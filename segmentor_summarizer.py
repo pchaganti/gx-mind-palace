@@ -1,4 +1,4 @@
-from google import genai
+import google.generativeai as genai
 import streamlit as st
 from sanitizer import extract_json_1, extract_json
 import os
