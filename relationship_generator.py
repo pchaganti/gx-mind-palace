@@ -1,4 +1,4 @@
-import google.generativeai as genai
+from google import genai
 from sanitizer import extract_json
 import os
 from dotenv import load_dotenv
