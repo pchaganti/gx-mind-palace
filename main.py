@@ -75,7 +75,7 @@ def switch_tab(tab_index):
     st.session_state.active_tab = tab_index
 
 # Main UI
-st.set_page_config(page_title="mindpalace", page_icon="test.png", layout="wide")
+st.set_page_config(page_title="mindpalace", page_icon="logo.png", layout="wide")
 st.header('mindpalace')
 
 # Input selection and collection
