@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+ACCESS_TOKEN = st.secrets["ACCESS_TOKEN"]
 EXCLUDED_FILE_TYPES = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".webp", ".pdf", ".zip", ".tar", ".gz", ".mp4", ".mp3", ".avi"}
 HEADERS = {
     'Authorization': f'token {ACCESS_TOKEN}',
