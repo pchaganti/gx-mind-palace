@@ -23,7 +23,7 @@ if "init" not in st.session_state:
     st.session_state.tab_selection = "Mindmap"  # Initialize tab selection
 
 # Add this cache decorator for the generate function
-@st.cache_data(show_spinner=False, persist=True)
+@st.cache_data(show_spinner=False, persist="disk")
 def cached_generate(topic_data):
     return generate(topic_data)
 
