@@ -7,7 +7,7 @@ import streamlit as st
 
 load_dotenv()
 #  changing this to mistral ocr
-mistral_api_key= os.getenv("MISTRAL_API_KEY")
+mistral_api_key= st.secrets["MISTRAL_API_KEY"]
 client = Mistral(api_key=mistral_api_key)
 def extract_from_mistral(pdf_file):
     pdf_bytes=pdf_file.read()
