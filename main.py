@@ -20,10 +20,6 @@ if "init" not in st.session_state:
     st.session_state.mindmap_generated = False
     st.session_state.tab_selection = "Mindmap"  # Initialize tab selection
 
-# Add this cache decorator for the generate function
-@st.cache_data(show_spinner=False)
-def cached_generate(topic_data):
-    return generate(topic_data)
 
 def process_github():
     if st.session_state.github_url:
