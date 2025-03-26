@@ -20,6 +20,9 @@ if "init" not in st.session_state:
     st.session_state.mindmap_generated = False
     st.session_state.tab_selection = "Mindmap"  # Initialize tab selection
 
+@st.cache_data(show_spinner=False)
+def cached_generate(topic_data):
+    return generate(topic_data)
 
 def process_github():
     if st.session_state.github_url:
@@ -115,9 +118,8 @@ if st.session_state.content_generated:
             st.session_state.mindmap_generated = True
         else:
             # Initialize vectorstore if needed
-            if not st.session_state.vectorstore:
-                with st.spinner(text="preparing AI system...", show_time=False):
-                    st.session_state.vectorstore = create_embeddings(st.session_state.extracted_text)
+            with st.spinner(text="preparing AI system...", show_time=False):
+                st.session_state.vectorstore = create_embeddings(st.session_state.extracted_text)
             
             # Create a container with fixed height for chat messages
             chat_container = st.container(height=600)
