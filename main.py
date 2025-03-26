@@ -20,9 +20,9 @@ if "init" not in st.session_state:
     st.session_state.mindmap_generated = False
     st.session_state.tab_selection = "Mindmap"  # Initialize tab selection
 
-@st.cache_data(show_spinner=False)
-def cached_generate(topic_data):
-    return generate(topic_data)
+# @st.cache_data(show_spinner=False)
+# def cached_generate(topic_data):
+#     return generate(topic_data)
 
 def process_github():
     if st.session_state.github_url:
@@ -114,7 +114,7 @@ if st.session_state.content_generated:
         
         # Show content based on selected tab
         if tab_selection == "mindpalace":
-            cached_generate(st.session_state.topic_data)
+            generate(st.session_state.topic_data)
             st.session_state.mindmap_generated = True
         else:
             # Initialize vectorstore if needed
