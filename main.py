@@ -113,7 +113,7 @@ if st.session_state.content_generated:
                                key="tab_selection")
         
         # Show content based on selected tab
-        if tab_selection == "mindpalace":
+        if tab_selection == "ask ai":
             # Initialize vectorstore if needed
             with st.spinner(text="preparing ai system...", show_time=False):
                 st.session_state.vectorstore = create_embeddings(st.session_state.extracted_text)
