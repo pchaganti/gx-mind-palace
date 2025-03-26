@@ -133,7 +133,7 @@ if st.session_state.content_generated:
                 docs = retriever.invoke(prompt)
                 
                 system_prompt = f"""You are an AI assistant tasked with answering questions based on the provided context.
-                Your goal is to generate a comprehensive, detailed answer for the given question using the information available in the context.
+                Your goal is to generate a **comprehensive and detailed answer** for the given question using the information available in the context.
                 Context: {docs}"""
                 
                 st.session_state.messages.append(SystemMessage(system_prompt))
