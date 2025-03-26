@@ -114,9 +114,6 @@ if st.session_state.content_generated:
         
         # Show content based on selected tab
         if tab_selection == "mindpalace":
-            generate(st.session_state.topic_data)
-            st.session_state.mindmap_generated = True
-        else:
             # Initialize vectorstore if needed
             with st.spinner(text="preparing ai system...", show_time=False):
                 st.session_state.vectorstore = create_embeddings(st.session_state.extracted_text)
@@ -156,3 +153,6 @@ if st.session_state.content_generated:
                             result = llm.invoke(st.session_state.messages).content
                             st.markdown(result)
                             st.session_state.messages.append(AIMessage(result))
+        else:
+            generate(st.session_state.topic_data)
+            st.session_state.mindmap_generated = True
