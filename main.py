@@ -3,12 +3,10 @@ from github_scraper import github_extractor
 from generator import generate
 from segmentor_summarizer import ss_pdf_text, ss_repo_text
 from pdf_ocr import extract_from_mistral
-from new_rag import rag, create_embeddings
+from new_rag import create_embeddings
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
-from functools import partial
-import warnings
-warnings.filterwarnings("ignore", category=UserWarning, module="streamlit")
+import os
 
 # Initialize session state variables
 if "init" not in st.session_state:
@@ -55,10 +53,16 @@ def process_pdf():
 def on_generate():
     st.session_state.content_generated = False
     st.session_state.vectorstore = None
+    st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
     st.session_state.active_tab = 0
     st.session_state.mindmap_generated = False  # Reset mindmap generation flag
     
+    if os.path.exists("faiss_index"):
+        import shutil
+        shutil.rmtree("faiss_index")
+    
     success = False
+    
     if st.session_state.input_option == "github repository":
         success = process_github()
     else:

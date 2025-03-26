@@ -22,11 +22,7 @@ def create_embeddings(data):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
 
     # Load existing FAISS index if available
-    if os.path.exists("faiss_index"):
-        vectorstore = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
-    else:
-        vectorstore = FAISS.from_texts(text_chunks, embeddings)
-        vectorstore.save_local("faiss_index")
+    vectorstore = FAISS.from_texts(text_chunks, embeddings)
 
     return vectorstore
 
