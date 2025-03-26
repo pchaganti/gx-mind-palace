@@ -87,7 +87,7 @@ st.radio("select input source", ("github repository", "pdf document"), key="inpu
 if st.session_state.input_option == "github repository":
     st.text_input("enter gitHub repository url", key="github_url")
 else:
-    st.file_uploader("Upload your PDF", type="pdf", key="pdf")
+    st.file_uploader("upload your pdf", type="pdf", key="pdf")
 
 button=st.button("generate mindpalace", type="primary")
 if button:
@@ -118,22 +118,22 @@ if st.session_state.content_generated:
             st.session_state.mindmap_generated = True
         else:
             # Initialize vectorstore if needed
-            with st.spinner(text="preparing AI system...", show_time=False):
+            with st.spinner(text="preparing ai system...", show_time=False):
                 st.session_state.vectorstore = create_embeddings(st.session_state.extracted_text)
             
             # Create a container with fixed height for chat messages
             chat_container = st.container(height=600)
             
             # Chat input before container
-            if prompt := st.chat_input("Ask a question about the document"):
+            if prompt := st.chat_input("ask a question"):
                 st.session_state.messages.append(HumanMessage(prompt))
                 
                 # Get response from RAG
                 retriever = st.session_state.vectorstore.as_retriever(search_kwargs={"k": 5})
                 docs = retriever.invoke(prompt)
                 
-                system_prompt = f"""You are an AI assistant tasked with answering questions based solely on the provided context.
-                Your goal is to generate a comprehensive answer for the given question using only the information available in the context.
+                system_prompt = f"""You are an AI assistant tasked with answering questions based on the provided context.
+                Your goal is to generate a comprehensive, detailed answer for the given question using the information available in the context.
                 Context: {docs}"""
                 
                 st.session_state.messages.append(SystemMessage(system_prompt))
