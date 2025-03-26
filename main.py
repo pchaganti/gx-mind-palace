@@ -108,12 +108,12 @@ if st.session_state.content_generated:
     # Create tabs for mindmap and chat
     if st.session_state.topic_data:
         # Add tab selector
-        tab_selection = st.radio("Select View", ["Mindmap", "AI Chat"], 
+        tab_selection = st.radio("Select View", ["mindpalace", "ask ai"], 
                                horizontal=True, 
                                key="tab_selection")
         
         # Show content based on selected tab
-        if tab_selection == "Mindmap":
+        if tab_selection == "mindpalace":
             cached_generate(st.session_state.topic_data)
             st.session_state.mindmap_generated = True
         else:
@@ -151,7 +151,7 @@ if st.session_state.content_generated:
                 # Show thinking spinner and generate response inside container
                 if prompt:
                     with st.chat_message("assistant"):
-                        with st.spinner("Thinking..."):
+                        with st.spinner("thinking..."):
                             llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.8)
                             result = llm.invoke(st.session_state.messages).content
                             st.markdown(result)
