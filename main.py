@@ -91,22 +91,22 @@ st.header('mindpalace')
 st.radio("select input source", ("github repository", "pdf document"), key="input_option")
 
 if st.session_state.input_option == "github repository":
-    st.session_state.content_generated = False
-    st.session_state.extracted_text = None
-    st.session_state.topic_data = None
-    st.session_state.vectorstore = None
-    st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
-    st.session_state.active_tab = 0
-    st.session_state.mindmap_generated = False  # Reset mindmap generation flag
+    # st.session_state.content_generated = False
+    # st.session_state.extracted_text = None
+    # st.session_state.topic_data = None
+    # st.session_state.vectorstore = None
+    # st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
+    # st.session_state.active_tab = 0
+    # st.session_state.mindmap_generated = False  # Reset mindmap generation flag
     st.text_input("enter gitHub repository url", key="github_url")
 else:
-    st.session_state.content_generated = False
-    st.session_state.extracted_text = None
-    st.session_state.topic_data = None
-    st.session_state.vectorstore = None
-    st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
-    st.session_state.active_tab = 0
-    st.session_state.mindmap_generated = False  # Reset mindmap generation flag
+    # st.session_state.content_generated = False
+    # st.session_state.extracted_text = None
+    # st.session_state.topic_data = None
+    # st.session_state.vectorstore = None
+    # st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
+    # st.session_state.active_tab = 0
+    # st.session_state.mindmap_generated = False  # Reset mindmap generation flag
     st.file_uploader("upload your pdf", type="pdf", key="pdf")
 
 button=st.button("generate mindpalace", type="primary")
