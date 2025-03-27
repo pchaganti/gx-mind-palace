@@ -68,7 +68,7 @@ def on_generate():
             st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
 
 # Main UI
-st.set_page_config(page_title="mindpalace", page_icon="logo.png", layout="wide")
+st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
 st.header('mindpalace')
 
 # Input selection and collection
@@ -124,7 +124,7 @@ if st.session_state.content_generated:
                 st.session_state.messages.append(HumanMessage(prompt))
                 
                 # Get response from RAG
-                retriever = st.session_state.vectorstore.as_retriever(search_kwargs={"k": 5})
+                retriever = st.session_state.vectorstore.as_retriever(search_kwargs={"k": 8})
                 docs = retriever.invoke(prompt)
                 
                 system_prompt = f"""You are an AI assistant tasked with answering questions based on the provided context.
