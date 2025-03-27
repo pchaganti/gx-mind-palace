@@ -69,7 +69,7 @@ def on_generate():
 
 # Main UI
 st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
-st.logo("logo_mp.png")
+st.logo("logo_mp.png", size='large')
 st.header('mindpalace')
 
 # Input selection and collection
