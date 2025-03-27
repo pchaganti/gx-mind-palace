@@ -71,7 +71,7 @@ def on_generate():
 st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
-col1, col2=st.columns([1,7])
+col1, col3, col2=st.columns([10,1,70])
 with col1:
     st.image("logo_mp.png", width=75)
 with col2:
