@@ -81,7 +81,7 @@ st.markdown(
         display: flex;
     }
     .logo-text {
-        font-weight:625 !important;
+        font-weight:600 !important;
         font-size:35px !important;
         color: #ffffff !important;}
     .logo-img {
