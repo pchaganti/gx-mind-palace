@@ -172,11 +172,3 @@ def generate(topic_data):
     else:
         st.error("No topics detected.")
         st.cache_data.clear()
-
-    st.write("#### Combined Mind-Map")
-    # Combine topics and summaries for better relationship extraction
-    all_topics_summaries = "\n".join([f"{topic['topic']}: {topic['summary']}" for topic in topic_data["topics"]])
-    with st.spinner(text="generating mindmap", show_time=False):
-        relationships_json = extract_relationships(all_topics_summaries)
-        mermaid_diagram = generate_mermaid_code_final(json.dumps(relationships_json))  # Convert dict to JSON string
-        stmd.st_mermaid(mermaid_diagram)

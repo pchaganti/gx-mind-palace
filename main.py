@@ -64,10 +64,12 @@ def on_generate():
     
     if st.session_state.input_option == "github repository":
         process_github()
-        st.session_state.topic_data = ss_repo_text(st.session_state.extracted_text)
+        with st.spinner("analysing repository"):
+            st.session_state.topic_data = ss_repo_text(st.session_state.extracted_text)
     elif st.session_state.input_option == "pdf document":
         process_pdf()
-        st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
+        with st.spinner("analysing pdf"):
+            st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
         
     # if success:
     #     with st.spinner(text=f"analysing {'repository' if st.session_state.input_option == 'github repository' else 'pdf'}", show_time=False):
@@ -91,6 +93,7 @@ st.radio("select input source", ("github repository", "pdf document"), key="inpu
 if st.session_state.input_option == "github repository":
     st.session_state.content_generated = False
     st.session_state.extracted_text = None
+    st.session_state.topic_data = None
     st.session_state.vectorstore = None
     st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
     st.session_state.active_tab = 0
@@ -99,6 +102,7 @@ if st.session_state.input_option == "github repository":
 else:
     st.session_state.content_generated = False
     st.session_state.extracted_text = None
+    st.session_state.topic_data = None
     st.session_state.vectorstore = None
     st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
     st.session_state.active_tab = 0
