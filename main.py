@@ -51,6 +51,7 @@ def process_pdf():
 
 def on_generate():
     st.session_state.content_generated = False
+    st.session_state.extracted_text = None
     st.session_state.vectorstore = None
     st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
     st.session_state.active_tab = 0
