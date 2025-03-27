@@ -7,6 +7,7 @@ from new_rag import create_embeddings
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
+import base64
 
 def reset_state():
     st.session_state.content_generated = False
