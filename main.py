@@ -71,11 +71,42 @@ def on_generate():
 st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
-col1, col3, col2=st.columns([1,0.1,7])
-with col1:
-    st.image("logo_mp_2.png",)
-with col2:
-    st.write('## mindpalace')
+LOGO_IMAGE = "logo_mp.png"
+
+st.markdown(
+    """
+    <style>
+    .container {
+        display: flex;
+    }
+    .logo-text {
+        font-weight:700 !important;
+        font-size:50px !important;
+        color: #f9a01b !important;
+        padding-top: 75px !important;
+    }
+    .logo-img {
+        float:right;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    f"""
+    <div class="container">
+        <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(LOGO_IMAGE, "rb").read()).decode()}">
+        <p class="logo-text">## mindpalace ?</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+# col1, col3, col2=st.columns([1,0.1,7])
+# with col1:
+#     st.image("logo_mp_2.png",)
+# with col2:
+#     st.write('## mindpalace')
 
 # Input selection and collection
 input_option=st.radio("select input source", ("github repository", "pdf document"), key="input_option")
