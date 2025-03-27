@@ -72,9 +72,9 @@ st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wid
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
 title_container = st.beta_container()
-    col1, col2 = st.beta_columns([1, 20])
-    col1=st.logo("logo_mp.png", size='large')
-    col2=st.header('mindpalace')
+col1, col2 = st.beta_columns([1, 20])
+col1=st.logo("logo_mp.png", size='large')
+col2=st.header('mindpalace')
 
 # Input selection and collection
 input_option=st.radio("select input source", ("github repository", "pdf document"), key="input_option")
