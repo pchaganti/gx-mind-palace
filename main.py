@@ -104,7 +104,7 @@ if st.session_state.content_generated:
         st.write("#### contents")
         with st.expander("# repository contents"):
             st.code(st.session_state.extracted_text)
-    else:
+    elif st.session_state.input_option == "pdf document":
         with st.expander("### Extracted Text"):
             st.write(st.session_state.extracted_text)
     
