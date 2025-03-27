@@ -71,9 +71,8 @@ def on_generate():
 st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
-col1, col2 = st.columns([1, 20])
-col1=st.image("logo_mp.png", width=50)
-col2=st.header('mindpalace')
+st.image("logo_mp.png", width=100)
+st.header('mindpalace')
 
 # Input selection and collection
 input_option=st.radio("select input source", ("github repository", "pdf document"), key="input_option")
