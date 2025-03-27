@@ -83,7 +83,7 @@ st.markdown(
     .logo-text {
         font-weight:700 !important;
         font-size:35px !important;
-        color: #e66b22 !important;
+        color: #ffffff !important;
         padding-top: 75px !important;
     }
     .logo-img {
