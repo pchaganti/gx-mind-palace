@@ -72,7 +72,7 @@ def on_generate():
 st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
-LOGO_IMAGE = "logo_mp.png"
+LOGO_IMAGE = "logo_mp_2.png"
 
 st.markdown(
     """
@@ -82,8 +82,8 @@ st.markdown(
     }
     .logo-text {
         font-weight:700 !important;
-        font-size:50px !important;
-        color: #f9a01b !important;
+        font-size:35px !important;
+        color: #e66b22 !important;
         padding-top: 75px !important;
     }
     .logo-img {
@@ -98,7 +98,7 @@ st.markdown(
     f"""
     <div class="container">
         <img class="logo-img" src="data:image/png;base64,{base64.b64encode(open(LOGO_IMAGE, "rb").read()).decode()}">
-        <p class="logo-text">## mindpalace ?</p>
+        <p class="logo-text">mindpalace</p>
     </div>
     """,
     unsafe_allow_html=True
