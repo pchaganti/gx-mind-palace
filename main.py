@@ -72,7 +72,7 @@ st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wid
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
 col1, col2=st.columns([1,7], border=True)
-col1=st.image("logo_mp.png")
+col1=st.image("logo_mp.png", width=75)
 col2=st.write('## mindpalace')
 
 # Input selection and collection
