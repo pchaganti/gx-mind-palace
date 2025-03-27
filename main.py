@@ -72,7 +72,7 @@ def on_generate():
 st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
-LOGO_IMAGE = "logo_mp_2.png"
+LOGO_IMAGE = "logo_mp.png"
 
 st.markdown(
     """
@@ -81,7 +81,7 @@ st.markdown(
         display: flex;
     }
     .logo-text {
-        font-weight:700 !important;
+        font-weight:500 !important;
         font-size:35px !important;
         color: #ffffff !important;
         padding-top: 75px !important;
