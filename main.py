@@ -60,19 +60,22 @@ def on_generate():
         import shutil
         shutil.rmtree("faiss_index")
     
-    success = False
     
     if st.session_state.input_option == "github repository":
-        success = process_github()
-    else:
-        success = process_pdf()
+        process_github()
+        st.session_state.topic_data = ss_repo_text(st.session_state.extracted_text)
+    elif st.session_state.input_option == "pdf document":
+        process_pdf()
+        st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
         
-    if success:
-        with st.spinner(text=f"analysing {'repository' if st.session_state.input_option == 'github repository' else 'pdf'}", show_time=False):
-            if st.session_state.input_option == "github repository":
-                st.session_state.topic_data = ss_repo_text(st.session_state.extracted_text)
-            else:
-                st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
+    # if success:
+    #     with st.spinner(text=f"analysing {'repository' if st.session_state.input_option == 'github repository' else 'pdf'}", show_time=False):
+    #         if st.session_state.input_option == "github repository":
+                # st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
+    #         elif st.session_state.input_option == "pdf document":
+                # st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
+        
+                
 
 def switch_tab(tab_index):
     st.session_state.active_tab = tab_index
