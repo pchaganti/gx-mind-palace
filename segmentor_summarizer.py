@@ -57,7 +57,7 @@ def ss_repo_text(text):
         **Rules:**
         - Identify **all important files** (code files, config files, documentation, assets, workflows).
         - **Group files** into categories (e.g., Backend, Frontend, Configurations, Testing, Documentation).
-        - Ignore unnecessary files like `.gitignore`, `LICENSE`, `.DS_Store`, `CONTRIBUTING`
+        - **Ignore unnecessary** files like `.gitignore`, `LICENSE`, `.DS_Store`, `CONTRIBUTING`
         - For each file, provide:
           1. **File Purpose** - Explain what the file does and its significance in the repository.
           2. **Key Functions & Classes** - List all major functions, methods, and classes with descriptions.
