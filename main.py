@@ -117,7 +117,7 @@ if st.session_state.content_generated:
                 st.session_state.vectorstore = create_embeddings(st.session_state.extracted_text)
             
             # Create a container with fixed height for chat messages
-            chat_container = st.container(height=400)
+            chat_container = st.container(height=475)
             
             # Chat input before container
             if prompt := st.chat_input("ask a question"):
