@@ -8,21 +8,18 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 
+def reset_state():
+    st.session_state.content_generated = False
+    st.session_state.extracted_text = None
+    st.session_state.topic_data = None
+    st.session_state.vectorstore = None
+    st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]
+    st.session_state.mindmap_generated = False
+
 # Initialize session state variables
 if "init" not in st.session_state:
     st.session_state.init = True
-    st.session_state.extracted_text = ""
-    st.session_state.vectorstore = None
-    st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]
-    st.session_state.content_generated = False
-    st.session_state.topic_data = None
-    st.session_state.active_tab = 0
-    st.session_state.mindmap_generated = False
-    st.session_state.tab_selection = "Mindmap"  # Initialize tab selection
-
-# @st.cache_data(show_spinner=False)
-# def cached_generate(topic_data):
-#     return generate(topic_data)
+    reset_state()
 
 def process_github():
     if st.session_state.github_url:
@@ -54,7 +51,6 @@ def on_generate():
     st.session_state.extracted_text = None
     st.session_state.vectorstore = None
     st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
-    st.session_state.active_tab = 0
     st.session_state.mindmap_generated = False  # Reset mindmap generation flag
     
     if os.path.exists("faiss_index"):
@@ -70,43 +66,24 @@ def on_generate():
         process_pdf()
         with st.spinner("analysing pdf"):
             st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
-        
-    # if success:
-    #     with st.spinner(text=f"analysing {'repository' if st.session_state.input_option == 'github repository' else 'pdf'}", show_time=False):
-    #         if st.session_state.input_option == "github repository":
-                # st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
-    #         elif st.session_state.input_option == "pdf document":
-                # st.session_state.topic_data = ss_pdf_text(st.session_state.extracted_text)
-        
-                
-
-def switch_tab(tab_index):
-    st.session_state.active_tab = tab_index
 
 # Main UI
 st.set_page_config(page_title="mindpalace", page_icon="logo.png", layout="wide")
 st.header('mindpalace')
 
 # Input selection and collection
-st.radio("select input source", ("github repository", "pdf document"), key="input_option")
+input_option=st.radio("select input source", ("github repository", "pdf document"), key="input_option")
+
+if "previous_input_option" not in st.session_state:
+    st.session_state.previous_input_option = None
+
+if st.session_state.previous_input_option != input_option:
+    reset_state()
+    st.session_state.previous_input_option = input_option
 
 if st.session_state.input_option == "github repository":
-    # st.session_state.content_generated = False
-    # st.session_state.extracted_text = None
-    # st.session_state.topic_data = None
-    # st.session_state.vectorstore = None
-    # st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
-    # st.session_state.active_tab = 0
-    # st.session_state.mindmap_generated = False  # Reset mindmap generation flag
     st.text_input("enter gitHub repository url", key="github_url")
 else:
-    # st.session_state.content_generated = False
-    # st.session_state.extracted_text = None
-    # st.session_state.topic_data = None
-    # st.session_state.vectorstore = None
-    # st.session_state.messages = [SystemMessage("You are an assistant for question-answering tasks.")]  # Reset chat messages
-    # st.session_state.active_tab = 0
-    # st.session_state.mindmap_generated = False  # Reset mindmap generation flag
     st.file_uploader("upload your pdf", type="pdf", key="pdf")
 
 button=st.button("generate mindpalace", type="primary")
