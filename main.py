@@ -71,8 +71,8 @@ def on_generate():
 st.set_page_config(page_title="mindpalace", page_icon="logo_mp.png", layout="wide")
 # st.logo("logo_mp.png", size='large')
 # st.header('mindpalace')
-col1, col2=st.beta_columns([1,7], border=True)
-col1=st.image("logo_mp.png", width=50)
+col1, col2=st.columns([1,7], border=True)
+col1=st.image("logo_mp.png")
 col2=st.write('## mindpalace')
 
 # Input selection and collection
