@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/1rvinn/mindpalace/blob/654cf32143071c9a4baba136d4d55bc15f2c435e/logo_mp.png" alt="Logo" />
-  # mindpalace
+  <img src="https://github.com/1rvinn/mindpalace/blob/654cf32143071c9a4baba136d4d55bc15f2c435e/logo_mp.png" alt="Logo" style="width: 150px; height: auto;"/>
+  mindpalace
 </p>
 > https://mindpalace.streamlit.app
 
