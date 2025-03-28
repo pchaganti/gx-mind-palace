@@ -11,7 +11,7 @@ so, i built mindpalace - a tool that allows you to to parse through github repos
 works on any device, no api keys reqd, no downloads reqd.
 
 <div align="center" >
-  <img width=100% src="https://github.com/1rvinn/mindpalace/blob/8c5616f15dd388e24276db091698ce387c1e3f18/mindpalace_demo.gif" alt="demo"/>
+  <img width=60% src="https://github.com/1rvinn/mindpalace/blob/8c5616f15dd388e24276db091698ce387c1e3f18/mindpalace_demo.gif" alt="demo"/>
 </div>
 
 
