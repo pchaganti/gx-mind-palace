@@ -9,5 +9,5 @@ lately, i have been finding it really hard to go through excruciatingly long git
 so, i built mindpalace - a tool that allows you to to parse through github repos effectively by generating file-wise explanations, and workflow breakdowns while also generating mind maps for you to learn visually. and the rag based ask ai feature, that allows you to ask anything and everything about the repo, serves as a cherry on top. i have also extended the functionality to pdf documents. \
 works on any device, no api keys reqd, no downloads reqd. \
 
-![](https://github.com/1rvinn/mindpalace/blob/520acafdefab539da82e41747b4adfa420bf7565/mindpalace_demo.mp4)
+https://github.com/user-attachments/assets/6a967d11-808e-473f-b4f5-30824b2c4e93
 
