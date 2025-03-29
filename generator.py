@@ -124,7 +124,7 @@ def generate_mermaid_code_final(relationships_json):
                 unique_nodes[node] = letters[node_index]
                 node_index += 1
                 if node_index >= len(letters):  # Prevent index out of range
-                    node_index = 0  # Restart or modify to handle more nodes
+                    node_index = 0 
 
     # Define nodes
     for node, letter in unique_nodes.items():

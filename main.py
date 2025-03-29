@@ -93,7 +93,6 @@ st.divider()
 
 # Display content and generate diagrams
 if st.session_state.content_generated:
-    # Display content
     if st.session_state.input_option == "github repository":
         st.write("#### contents")
         with st.expander("# repository contents"):
@@ -103,23 +102,19 @@ if st.session_state.content_generated:
         with st.expander("# extracted text"):
             st.write(st.session_state.extracted_text)
     
-    # Create tabs for mindmap and chat
+    # tabs for mindmap and chat
     if st.session_state.topic_data:
-        # Add tab selector
         tab_selection = st.radio("Select View", ["mindpalace", "ask ai"], 
                                horizontal=True, 
                                key="tab_selection")
         
-        # Show content based on selected tab
         if tab_selection == "ask ai":
             # Initialize vectorstore if needed
             with st.spinner(text="preparing ai system...", show_time=False):
                 st.session_state.vectorstore = create_embeddings(st.session_state.extracted_text)
             
-            # Create a container with fixed height for chat messages
             chat_container = st.container(height=475)
             
-            # Chat input before container
             if prompt := st.chat_input("ask a question"):
                 st.session_state.messages.append(HumanMessage(prompt))
                 
@@ -133,7 +128,6 @@ if st.session_state.content_generated:
                 
                 st.session_state.messages.append(SystemMessage(system_prompt))
 
-            # Display all messages in container, including new ones
             with chat_container:
                 for message in st.session_state.messages:
                     if isinstance(message, HumanMessage):
@@ -143,7 +137,6 @@ if st.session_state.content_generated:
                         with st.chat_message("assistant"):
                             st.markdown(message.content)
                 
-                # Show thinking spinner and generate response inside container
                 if prompt:
                     with st.chat_message("assistant"):
                         with st.spinner("thinking..."):
