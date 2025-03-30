@@ -31,6 +31,8 @@ def process_github():
                 st.session_state.extracted_text = text
                 st.session_state.content_generated = True
                 return True
+        elif st.session_state.github_url=="":
+            st.error("invalid github repository url. please enter a valid url.")
         else:
             st.error("invalid github repository url. please enter a valid url.")
     return False
@@ -45,6 +47,8 @@ def process_pdf():
                 return True
             else:
                 st.error("No text could be extracted from the PDF.")
+    else:
+        st.error("invalid pdf. please enter a valid pdf.")
     return False
 
 def on_generate():
