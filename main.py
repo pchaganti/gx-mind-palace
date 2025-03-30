@@ -49,7 +49,6 @@ def process_pdf():
                 st.error("No text could be extracted from the PDF.")
     else:
         st.error("invalid pdf. please enter a valid pdf.")
-        break
     return False
 
 def on_generate():
