@@ -3,7 +3,7 @@ import json
 import streamlit as st
 
 def sanitize_text(text):
-    return re.sub(r'[^a-zA-Z0-9\s\-\>\:\.\*\=\-\\]', '', text)  # remove symbols except `->`, `:`, '.'
+    return re.sub(r'[^a-zA-Z0-9\s\-\>\:\.\*\=\-\^\]', '', text)  # remove symbols except `->`, `:`, '.'
 
 def extract_json(text):
     """Extracts valid json from response, sanitizing invalid characters."""
