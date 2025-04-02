@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import string
-# from sanitizer import sanitize_text
+from sanitizer import sanitize_text
 import time
 from relationship_generator import extract_relationships
 import streamlit_mermaid as stmd
@@ -36,9 +36,9 @@ def generate_mermaid_code(relationships_json):
     node_counter = 0  # Start from 0 and increment
 
     for relation in relationships:
-        from_topic = relation["from"]
-        to_topic = relation["to"]
-        relation_text = relation["relationship"]
+        from_topic = sanitize_text(relation["from"])
+        to_topic = sanitize_text(relation["to"])
+        relation_text = sanitize_text(relation["relationship"])
 
         if from_topic not in nodes:
             nodes[from_topic] = get_node_label(node_counter)
@@ -76,9 +76,9 @@ def generate_mermaid_code_pipeline(relationships_json):
     node_counter = 0  # Start from 0 and increment
 
     for relation in relationships:
-        from_topic = relation["from"]
-        to_topic = relation["to"]
-        relation_text = relation["relationship"]
+        from_topic = sanitize_text(relation["from"])
+        to_topic = sanitize_text(relation["to"])
+        relation_text = sanitize_text(relation["relationship"])
 
         if from_topic not in nodes:
             nodes[from_topic] = get_node_label(node_counter)
