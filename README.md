@@ -12,6 +12,10 @@ works on any device, no api keys reqd, no downloads reqd.
 
 https://github.com/user-attachments/assets/6a967d11-808e-473f-b4f5-30824b2c4e93
 
+pipeline
+-------
+![pipeline](https://github.com/1rvinn/mindpalace/blob/main/pipeline_mp.png?raw=true)
+
 want to run it locally? here are the steps:
 -------
 1. ensure that python, pip and git are installed
@@ -31,12 +35,9 @@ want to run it locally? here are the steps:
 
        ACCESS_TOKEN='add your access token here'
        MISTRAL_API_KEY='add your api key here'
-        GEMINI_API_KEY='add your api key here'
+       GEMINI_API_KEY='add your api key here'
 
 
 9. run the app
 
         python3 -m streamlit run app.py
-
-### pipeline
-![pipeline](https://github.com/1rvinn/mindpalace/blob/main/pipeline_mp.png?raw=true)
