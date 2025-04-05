@@ -12,8 +12,31 @@ works on any device, no api keys reqd, no downloads reqd.
 
 https://github.com/user-attachments/assets/6a967d11-808e-473f-b4f5-30824b2c4e93
 
+want to run it locally? here are the steps:
+-------
+1. ensure that python, pip and git are installed
+
+        sudo apt update && sudo apt-get install python3
+        sudo apt-get install python3-pip
+        sudo apt install git
+4. clone the github repo & cd into it
+
+        git clone https://github.com/1rvinn/mindpalace.git && cd mindpalace
+5. install the required libraries by creating a virtual environment
+
+		python3 -m venv .venv
+		source .venv/bin/activate
+       pip install -r requirements.txt
+7. get your api keys from gemini, mistral and github access tokem. then update them in .streamlit/secrets.toml as shown below
+
+       ACCESS_TOKEN='add your access token here'
+       MISTRAL_API_KEY='add your api key here'
+        GEMINI_API_KEY='add your api key here'
+
+
+9. run the app
+
+        python3 -m streamlit run app.py
+
 ### pipeline
 ![pipeline](https://github.com/1rvinn/mindpalace/blob/main/pipeline_mp.png?raw=true)
-
-
-
