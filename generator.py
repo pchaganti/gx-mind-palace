@@ -171,7 +171,6 @@ def generate(topic_data):
             st.write(f"{summary}")
 
             with st.spinner(text="generating mindmap", show_time=False):
-                time.sleep(1.5)
                 relationships = extract_relationships(summary)
 
                 if relationships:
@@ -181,7 +180,8 @@ def generate(topic_data):
                     else:
                         mermaid_codes.append(generate_mermaid_code(relationships))
                     stmd.st_mermaid(mermaid_codes[i])
-            st.download_button(label="save as image", data=(mermaid_to_png(mermaid_codes[i])),file_name="mindpalace_diagram.png", mime="image/png") # for saving image
+            image=mermaid_to_png(mermaid_codes[i])
+            st.download_button(label="save as image", data=image,file_name="mindpalace_diagram.png", mime="image/png") # for saving image
             st.divider()
             i+=1
     else:
