@@ -142,8 +142,8 @@ def generate_mermaid_code_final(relationships_json):
         mermaid_code += f'  class {letter} customStyle;\n'
     return mermaid_code
 
-def mermaid_to_svg(mermaid_code: str):
-    url = "https://kroki.io/mermaid/svg"
+def mermaid_to_png(mermaid_code: str):
+    url = "https://kroki.io/mermaid/png"
     headers = {"Content-Type": "text/plain"}
     
     response = requests.post(url, data=mermaid_code.encode('utf-8'), headers=headers)
@@ -181,7 +181,7 @@ def generate(topic_data):
                     else:
                         mermaid_codes.append(generate_mermaid_code(relationships))
                     stmd.st_mermaid(mermaid_codes[i])
-            st.download_button(label="save as image", data=(mermaid_to_svg(mermaid_codes[i])), mime="image/svg+xml") # for saving image
+            st.download_button(label="save as image", data=(mermaid_to_png(mermaid_codes[i])),file_name="mindpalace_diagram.png", mime="image/png") # for saving image
             st.divider()
             i+=1
     else:
