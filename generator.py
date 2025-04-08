@@ -158,12 +158,11 @@ def generate(topic_data):
         st.error("Failed to summarize topics.")
         st.cache_data.clear()
         st.stop()
+    i=0
     if topic_data:
         # col1, col2 = st.columns([0.55,0.45])
         st.write("#### topics and summaries")
         # st.write("### 🧠 Mind Maps")
-        mermaid_codes=[]
-        i=0
         for topic in topic_data["topics"]:
             topic_name = topic["topic"]
             summary = topic["summary"]
@@ -176,12 +175,12 @@ def generate(topic_data):
                 if relationships:
                     time.sleep(1)
                     if topic_name=="Pipeline":
-                        mermaid_codes.append(generate_mermaid_code_pipeline(relationships))
+                        mermaid_code=generate_mermaid_code_pipeline(relationships)
                     else:
-                        mermaid_codes.append(generate_mermaid_code(relationships))
-                    stmd.st_mermaid(mermaid_codes[i])
-            image=mermaid_to_png(mermaid_codes[i])
-            st.download_button(label="save as image", data=image,file_name="mindpalace_diagram.png", mime="image/png") # for saving image
+                        mermaid_code=generate_mermaid_code(relationships)
+                    stmd.st_mermaid(mermaid_code)
+            image=mermaid_to_png(mermaid_code)
+            st.download_button(label="save as image", data=image,file_name="mindpalace_diagram.png", mime="image/png", key=i) # for saving image
             st.divider()
             i+=1
     else:
