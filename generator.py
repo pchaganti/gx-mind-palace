@@ -181,7 +181,8 @@ def generate(topic_data):
                     else:
                         mermaid_codes.append(generate_mermaid_code(relationships))
                     stmd.st_mermaid(mermaid_codes[i])
-            st.download_button(label="save as image", data=(mermaid_to_svg(mermaid_codes[i]))) # for saving image
+            i+=1
+            st.download_button(label="save as image", data=(mermaid_to_svg(mermaid_codes[i])), mime="image/svg+xml") # for saving image
             st.divider()
     else:
         st.error("No topics detected.")
