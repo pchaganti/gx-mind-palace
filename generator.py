@@ -5,7 +5,7 @@ from sanitizer import sanitize_text
 import time
 from relationship_generator import extract_relationships
 import streamlit_mermaid as stmd
-
+import requests
 
 def get_node_label(index):
     """Generate a label like A, B, ..., Z, AA, AB, etc."""
@@ -142,6 +142,17 @@ def generate_mermaid_code_final(relationships_json):
         mermaid_code += f'  class {letter} customStyle;\n'
     return mermaid_code
 
+def mermaid_to_svg(mermaid_code: str):
+    url = "https://kroki.io/mermaid/svg"
+    headers = {"Content-Type": "text/plain"}
+    
+    response = requests.post(url, data=mermaid_code.encode('utf-8'), headers=headers)
+
+    if response.status_code == 200:
+        return response.content
+    else:
+        return none
+
 def generate(topic_data):
     if topic_data is None:
         st.error("Failed to summarize topics.")
@@ -151,6 +162,8 @@ def generate(topic_data):
         # col1, col2 = st.columns([0.55,0.45])
         st.write("#### topics and summaries")
         # st.write("### 🧠 Mind Maps")
+        mermaid_codes=[]
+        i=0
         for topic in topic_data["topics"]:
             topic_name = topic["topic"]
             summary = topic["summary"]
@@ -164,10 +177,11 @@ def generate(topic_data):
                 if relationships:
                     time.sleep(1)
                     if topic_name=="Pipeline":
-                        mermaid_diagram = generate_mermaid_code_pipeline(relationships)
+                        mermaid_codes[i] = generate_mermaid_code_pipeline(relationships)
                     else:
-                        mermaid_diagram = generate_mermaid_code(relationships)
-                    stmd.st_mermaid(mermaid_diagram)
+                        mermaid_codes[i] = generate_mermaid_code(relationships)
+                    stmd.st_mermaid(mermaid_codes[i])
+            st.download_button(label="save as image", data=mermaid_to_svg(mermaid_codes[i])) # for saving image
             st.divider()
     else:
         st.error("No topics detected.")
