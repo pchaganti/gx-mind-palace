@@ -104,7 +104,7 @@ if st.session_state.content_generated:
     elif st.session_state.input_option == "pdf document":
         st.write("#### contents")
         with st.expander("# extracted text"):
-            st.write(st.session_state.extracted_text)
+            st.markdown(st.session_state.extracted_text)
     
     # tabs for mindmap and chat
     if st.session_state.topic_data:

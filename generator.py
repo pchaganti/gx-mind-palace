@@ -154,6 +154,7 @@ def mermaid_to_png(mermaid_code: str):
         return none
 
 def generate(topic_data):
+    topic_data=json.loads(topic_data)
     if topic_data is None:
         st.error("Failed to summarize topics.")
         st.cache_data.clear()
