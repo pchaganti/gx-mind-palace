@@ -68,6 +68,9 @@ def ss_repo_text(text):
         - Ensure summaries are **very detailed (8-12 sentences per file)**.
         - Include **one topic for repository structure named 'Repository Structure'** and **one for the pipeline or flow named 'Pipeline'**.
         - **Strictly return JSON format only.**
+        - **Return a single, properly formatted JSON object.**
+        - Ensure all quotes are properly escaped.
+        - Avoid using newlines within text fields.
 
         **Example Output:**
         {{
