@@ -6,22 +6,24 @@ def sanitize_text(text):
     return re.sub(r'[^a-zA-Z0-9\s\-\>\:\.\*\=\-\^\+\,\<\>\?\%\\]', '', text)  # remove symbols except `->`, `:`, '.'
 
 def extract_json(text):
-    """Extracts valid json from response, sanitizing invalid characters."""
+    """Extracts valid JSON from AI response, sanitizing invalid characters."""
     match = re.search(r"\{.*\}", text, re.DOTALL)
     if match:
         json_str = match.group(0)
         
-
-        json_str = re.sub(r",\s*}", "}", json_str)  
-        json_str = re.sub(r",\s*\]", "]", json_str)  
+        # Fix common JSON issues
+        json_str = re.sub(r",\s*}", "}", json_str)  # Remove trailing commas before closing brace
+        json_str = re.sub(r",\s*\]", "]", json_str)  # Remove trailing commas before closing bracket
+        json_str = re.sub(r"}\s*{", "},{", json_str)  # Fix missing commas between objects
+        json_str = re.sub(r'(?<!\\)"(?=(,|\s*[}\]])|$)', '\\"', json_str)  # Escape unescaped quotes
         
         try:
-            return json.loads(json_str)  
+            return json.loads(json_str)
         except json.JSONDecodeError as e:
             print(f"JSON Error: {e}")
             print(f"Invalid JSON Received:\n{json_str}")
-            st.cache_data.clear
-            return None  
+            st.cache_data.clear()  # Note: added parentheses here
+            return None
     return None
 
 def extract_json_1(text):
