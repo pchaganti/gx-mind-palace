@@ -14,6 +14,19 @@ https://github.com/user-attachments/assets/6a967d11-808e-473f-b4f5-30824b2c4e93
 
 pipeline
 -------
+``` mermaid
+flowchart TD;
+A[user input]-->|"github repo"|B[github_scraper.py]
+A --> |"pdf document"|C[pdf_ocr.py]
+B-->|"content"|H
+C-->|"content"|H
+H["content json"]-->D[segmentor_summarizer.py]
+H-->|embeddings|I[vector store]
+I-->|"context"|J["ask ai rag"]
+D-->|"major topics and summaries"|E[relationship_generator.py]
+E-->|"relationships json"|F[generator.py]
+F-->|mermaid code|G[streamlit frontend]
+```
 ![pipeline](https://github.com/1rvinn/mindpalace/blob/main/pipeline_mp.png?raw=true)
 
 want to run it locally? here are the steps:
