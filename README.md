@@ -27,7 +27,6 @@ D-->|"major topics and summaries"|E[relationship_generator.py]
 E-->|"relationships json"|F[generator.py]
 F-->|mermaid code|G[streamlit frontend]
 ```
-![pipeline](https://github.com/1rvinn/mindpalace/blob/main/pipeline_mp.png?raw=true)
 
 want to run it locally? here are the steps:
 -------
