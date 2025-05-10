@@ -97,8 +97,16 @@ def generate_mermaid_code_pipeline(relationships_json):
     return mermaid_code
 
 def generate_mermaid_code_final(relationships_json):
-    relationships = json.loads(relationships_json)["relationships"]
-    
+    # Handle both string and dict input
+    if isinstance(relationships_json, str):
+        try:
+            relationships = json.loads(relationships_json)["relationships"]
+        except json.JSONDecodeError:
+            st.error("Invalid JSON format in relationships")
+            st.cache_data.clear()
+            return None
+    else:
+        relationships = relationships_json["relationships"]    
     mermaid_code = """%%{
   init: {
     'theme': 'base',
@@ -154,7 +162,14 @@ def mermaid_to_png(mermaid_code: str):
         return none
 
 def generate(topic_data):
-    topic_data=json.loads(topic_data)
+    # Handle both string and dict input
+    if isinstance(topic_data, str):
+        try:
+            topic_data = json.loads(topic_data)
+        except json.JSONDecodeError:
+            st.error("Invalid JSON format in topic data")
+            st.cache_data.clear()
+            st.stop()
     if topic_data is None:
         st.error("Failed to summarize topics.")
         st.cache_data.clear()
