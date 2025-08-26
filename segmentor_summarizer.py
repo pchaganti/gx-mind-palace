@@ -51,7 +51,7 @@ def ss_repo_text(text):
     model = genai.GenerativeModel(
         model_name="gemini-2.0-flash",
         generation_config=generation_config,
-        system_instruction=f"""
+        system_instruction="""
         Extract **all relevant files** from the GitHub repository and generate a **detailed, structured summary**.
 
         **Rules:**
@@ -73,18 +73,18 @@ def ss_repo_text(text):
         - Avoid using newlines within text fields.
 
         **Example Output:**
-        {{
+        {
             "topics": [
-                {{
+                {
                     "topic": "main.py",
                     "summary": "This file serves as the primary entry point of the application. It initializes the main execution loop, loads configuration settings from `config.yaml`, and manages API requests. It calls helper functions from `utils.py` and `database.py` for data handling. The main function defines the initialization of UI components and calls `model.py` for inference if needed."
-                }},
-                {{
+                },
+                {
                     "topic": "config.yaml",
                     "summary": "Stores all environment configurations, model hyperparameters, and API keys. This file is used across multiple scripts to ensure a standardized setup."
-                }}
+                }
             ]
-        }}
+        }
         """,
     )
     response = model.start_chat().send_message(text)
@@ -95,7 +95,7 @@ def ss_pdf_text(text):
     model = genai.GenerativeModel(
         model_name="gemini-2.0-flash",
         generation_config=generation_config,
-        system_instruction=f"""
+        system_instruction="""
         Extract **all key topics** from the given PDF and generate **detailed summaries**.
 
         **Rules:**
@@ -106,18 +106,18 @@ def ss_pdf_text(text):
         - **Strictly return JSON format only.**
 
         **Example Output:**
-        {{
+        {
             "topics": [
-                {{
+                {
                     "topic": "Deep Learning",
                     "summary": "Deep Learning is a subset of machine learning that uses artificial neural networks with multiple layers to learn representations of data. It is widely used in computer vision, natural language processing, and autonomous systems. Popular architectures include CNNs (for image processing), RNNs (for sequential data), and Transformers (for NLP tasks). Challenges include large data requirements and computational costs."
-                }},
-                {{
+                },
+                {
                     "topic": "Gradient Descent",
                     "summary": "Gradient descent is an optimization algorithm used to minimize the loss function in machine learning models. It updates model parameters iteratively by computing gradients. Variants include Stochastic Gradient Descent (SGD), Mini-Batch Gradient Descent, and Adam Optimizer."
-                }}
+                }
             ]
-        }}
+        }
         """,
     )
     response = model.start_chat().send_message(text)

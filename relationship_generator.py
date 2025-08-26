@@ -53,7 +53,7 @@ def extract_relationships(topic_text):
     model = genai.GenerativeModel(
         model_name="gemini-2.0-flash",
         generation_config=generation_config,
-        system_instruction=f"""
+        system_instruction="""
         Identify **logical relationships** between topics and structure them **hierarchically** for a mind map.
 
         **Rules:**
@@ -68,12 +68,12 @@ def extract_relationships(topic_text):
         - **Strictly return JSON format only.**
 
         **Example Output:**
-        {{
+        {
             "relationships": [
-                {{"from": "Deep Learning", "to": "Neural Networks", "relationship": "Built upon"}},
-                {{"from": "Convolutional Neural Networks", "to": "Image Processing", "relationship": "Used for"}}
+                {"from": "Deep Learning", "to": "Neural Networks", "relationship": "Built upon"},
+                {"from": "Convolutional Neural Networks", "to": "Image Processing", "relationship": "Used for"}
             ]
-        }}
+        }
         """,
     )
     response = model.start_chat().send_message(topic_text)
