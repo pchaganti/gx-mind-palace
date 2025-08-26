@@ -15,32 +15,6 @@ generation_config = {
     "top_k": 40,
     "max_output_tokens": 8192,
     "response_mime_type": "application/json",
-    "response_schema": {
-  "type": "object",
-  "properties": {
-    "topics": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "topic": {
-            "type": "string"
-          },
-          "summary": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "topic",
-          "summary"
-        ]
-      }
-    }
-  },
-  "required": [
-    "topics"
-  ]
-}
 }
 
 # def extract_relationships(topic_text):
