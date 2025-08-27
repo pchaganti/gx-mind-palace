@@ -15,6 +15,30 @@ generation_config = {
     "top_k": 40,
     "max_output_tokens": 8192,
     "response_mime_type": "application/json",
+    "response_schema": {
+  "type": "object",
+  "properties": {
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "relationship": {
+            "type": "string"
+          }
+        },
+        "required": ["from", "to", "relationship"]
+      }
+    }
+  },
+  "required": ["relationships"]
+}
 }
 
 # def extract_relationships(topic_text):
@@ -77,4 +101,4 @@ def extract_relationships(topic_text):
         """,
     )
     response = model.start_chat().send_message(topic_text)
-    return extract_json(response.text)
+    return response.text
