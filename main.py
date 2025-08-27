@@ -145,7 +145,7 @@ if st.session_state.content_generated:
                 if prompt:
                     with st.chat_message("assistant"):
                         with st.spinner("thinking..."):
-                            llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.8)
+                            llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.8)
                             result = llm.invoke(st.session_state.messages).content
                             st.markdown(result)
                             st.session_state.messages.append(AIMessage(result))

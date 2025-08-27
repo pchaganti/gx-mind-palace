@@ -114,7 +114,8 @@ def ss_repo_text(text):
         """,
     )
     response = model.start_chat().send_message(text)
-    return extract_json(response.text)
+    # return extract_json(response.text)
+    return response.text
 
 @st.cache_data(show_spinner=False)
 def ss_pdf_text(text):
@@ -147,4 +148,5 @@ def ss_pdf_text(text):
         """,
     )
     response = model.start_chat().send_message(text)
-    return extract_json(response.text)
+    # return extract_json(response.text)
+    return response.text
