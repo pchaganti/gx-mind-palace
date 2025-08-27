@@ -177,7 +177,7 @@ def mermaid_to_png(mermaid_code: str):
     if response.status_code == 200:
         return response.content
     else:
-        return none
+        return None
 
 def generate(topic_data):
     # Handle both string and dict input
