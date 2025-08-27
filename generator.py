@@ -214,7 +214,8 @@ def generate(topic_data):
                         mermaid_code=generate_mermaid_code(relationships)
                     image=mermaid_to_png(mermaid_code)
                     stmd.st_mermaid(mermaid_code)
-            st.download_button(label="save as image", data=image,file_name="mindpalace_diagram.png", mime="image/png", key=i) # for saving image
+            if image:
+                st.download_button(label="save as image", data=image,file_name="mindpalace_diagram.png", mime="image/png", key=i) # for saving image
             st.divider()
             i+=1
     else:
