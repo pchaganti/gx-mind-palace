@@ -57,7 +57,7 @@ def extract_json_1(text):
             return data  
 
         except json.JSONDecodeError as e:
-            st.write(f"JSON Error: {e}")
+            st.write(f"JSON Error 1: {e}")
             st.write(f"Invalid JSON Received:\n{json_str}")
             st.cache_data.clear()
             return None  
