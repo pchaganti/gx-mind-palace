@@ -17,7 +17,16 @@ def get_node_label(index):
     return label
 
 def generate_mermaid_code(relationships_json):
-    relationships = relationships_json["relationships"]
+    # Handle both string and dict input
+    if isinstance(relationships_json, str):
+        try:
+            relationships = json.loads(relationships_json)["relationships"]
+        except json.JSONDecodeError:
+            st.error("Invalid JSON format in relationships")
+            st.cache_data.clear()
+            return None
+    else:
+        relationships = relationships_json["relationships"]
     mermaid_code = """%%{
   init: {
     'theme': 'base',
@@ -57,7 +66,16 @@ def generate_mermaid_code(relationships_json):
     return mermaid_code
 
 def generate_mermaid_code_pipeline(relationships_json):
-    relationships = relationships_json["relationships"]
+    # Handle both string and dict input
+    if isinstance(relationships_json, str):
+        try:
+            relationships = json.loads(relationships_json)["relationships"]
+        except json.JSONDecodeError:
+            st.error("Invalid JSON format in relationships")
+            st.cache_data.clear()
+            return None
+    else:
+        relationships = relationships_json["relationships"]
     mermaid_code = """%%{
   init: {
     'theme': 'base',
